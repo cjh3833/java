@@ -8,18 +8,45 @@ import java.util.*;
 
 public class Hello {
     public static void main(String[] args) {
-        char ch = 'A';
-        int code = (int) ch;
-        System.out.printf("%c = %d(%#X) %n", ch, code, code);
+        /*
+        float f = 9.1234567f;
+        double d = 9.1234567;
+        double d2 = (double) f;
+        int i = 91234567;
+        double id = (double) i;
+        float iif = (float) i;
+        char c = (char) 1000;
+        System.out.printf("f = %20.18f\n", f);
+        System.out.printf("d = %20.18f\n", d);
+        System.out.printf("d2 = %20.18f\n", d2);
+        System.out.println(id);
+        System.out.println(iif);
+        System.out.println(c);
+        */
 
-        char hch = '가';
-        System.out.printf("%c = %d(%#X)%n", hch, (int) hch, (int) hch);
+        /*
+         * double d = 85.4;
+         * int score = (int) d++;
+         * 
+         * System.out.println(d);
+         * System.out.println(score);
+         * System.out.println(d);
+         */
 
-        System.out.println('\'');
-        System.out.println("abc\t123\b456");
-        System.out.println('\n');
-        System.out.println("\"Hello\"");
-        System.out.println("c:\\");
+        /*
+         * char ch = 'A';
+         * int code = (int) ch;
+         * System.out.printf("%c = %d(%#X) %n", ch, code, code);
+         * 
+         * char hch = '가';
+         * System.out.printf("%c = %d(%#X)%n", hch, (int) hch, (int) hch);
+         * 
+         * System.out.println('\'');
+         * System.out.println("abc\t123\b456");
+         * System.out.println('\n');
+         * System.out.println("\"Hello\"");
+         * System.out.println("c:\\");
+         */
 
         /*
          * Scanner scanner = new Scanner(System.in); // Scanner 클래스의 객체를 생성
