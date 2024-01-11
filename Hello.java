@@ -1,7 +1,7 @@
 
 /*
         Date : 2024.01.08
-        Source : Hello java
+        Source : Hello java, Java_Chapter_2
         Author : 최재형
 */
 import java.util.*;
@@ -14,6 +14,12 @@ public class Hello {
 
         char hch = '가';
         System.out.printf("%c = %d(%#X)%n", hch, (int) hch, (int) hch);
+
+        System.out.println('\'');
+        System.out.println("abc\t123\b456");
+        System.out.println('\n');
+        System.out.println("\"Hello\"");
+        System.out.println("c:\\");
 
         /*
          * Scanner scanner = new Scanner(System.in); // Scanner 클래스의 객체를 생성
