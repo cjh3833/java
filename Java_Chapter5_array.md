@@ -115,3 +115,7 @@ char[]toCharArray() | 문자열을 문자배열 (char[])로 변환해서 반환�
 ### toCharArray()
 - char배열과 String클래스의 변환
 - char[] chArr = {'A', 'B', 'C', 'D'}; <br>String str = new String(chArr); //char배열 -> String <br> char[] tmp = str.toCharArray(); //String -> char배열
+
+<br><br>
+
+## 다차원배열
