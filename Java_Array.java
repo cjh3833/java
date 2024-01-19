@@ -3,6 +3,136 @@ import java.util.*;
 public class Java_Array {
     public static void main(String[] args) {
 
+        int[][] m1 = {
+                { 1, 2, 3 },
+                { 4, 5, 6 }
+        };
+
+        int[][] m2 = {
+                { 1, 2 },
+                { 3, 4 },
+                { 5, 6 }
+        };
+
+        final int ROW = m1.length;
+        final int COL = m2[0].length;
+        final int M2_ROW = m2.length;
+
+        int[][] m3 = new int[ROW][COL];
+
+        // 행렬의 곱 m1 * m2의 결과를 m3에 저장
+        for (int i = 0; i < ROW; i++)
+            for (int j = 0; j < COL; j++)
+                for (int k = 0; k < M2_ROW; k++)
+                    m3[i][j] += m1[i][k] * m2[k][j];
+
+        for (int i = 0; i < ROW; i++) {
+            for (int j = 0; j < COL; j++) {
+                System.out.printf("%d ", m3[i][j]);
+            }
+            System.out.println();
+        }
+
+        /*
+         * // 예제 5-29 좌표에 x표하기
+         * final int SIZE = 5;
+         * int x = 0, y = 0;
+         * char[][] board = new char[SIZE][SIZE];
+         * byte[][] shipBoard = {
+         * { 1, 0, 0, 0, 0 },
+         * { 0, 1, 0, 0, 0 },
+         * { 0, 0, 1, 0, 0 },
+         * { 0, 0, 0, 1, 0 },
+         * { 0, 0, 0, 0, 1 },
+         * };
+         * 
+         * for (int i = 1; i < SIZE; i++) {
+         * board[0][i] = board[i][0] = (char) (i + '0');
+         * }
+         * 
+         * Scanner scanner = new Scanner(System.in);
+         * 
+         * while (true) {
+         * System.out.println("좌표를 입력하세요. (종료는 00)>");
+         * String input = scanner.nextLine();
+         * 
+         * if (input.length() == 2) {
+         * x = input.charAt(0) - '0';
+         * y = input.charAt(1) - '0';
+         * 
+         * if (x == 0 && y == 0)
+         * break;
+         * }
+         * if (input.length() != 2 || x <= 0 || x >= SIZE || y <= 0 || y > SIZE) {
+         * System.out.println("잘못된 입력입니다 다시 입력해주세요");
+         * continue;
+         * }
+         * 
+         * board[x][y] = shipBoard[x - 1][y - 1] == 1 ? 'O' : 'X';
+         * 
+         * for (int i = 0; i < SIZE; i++) {
+         * System.out.println(board[i]);
+         * }
+         * System.out.println();
+         * }
+         */
+
+        /*
+         * int[][] score = {
+         * { 100, 100, 100 },
+         * { 20, 20, 20 },
+         * { 30, 30, 30 },
+         * { 40, 40, 40 },
+         * { 50, 50, 50 }
+         * };
+         * 
+         * int korTotal = 0, engTotal = 0, mathTotal = 0;
+         * System.out.println("번호  국어  영어  수학  총점  평균");
+         * System.out.println("================================");
+         * 
+         * for (int i = 0; i < score.length; i++) {
+         * int sum = 0;
+         * float avg = 0.0f;
+         * 
+         * korTotal += score[i][0];
+         * engTotal += score[i][1];
+         * mathTotal += score[i][2];
+         * System.out.printf("%3d", i + 1);
+         * 
+         * for (int j = 0; j < score[i].length; j++) {
+         * sum += score[i][j];
+         * System.out.printf("%7d", score[i][j]);
+         * }
+         * 
+         * avg = sum / (float) score[i].length;
+         * System.out.printf("%5d %5.1f\n", sum, avg);
+         * }
+         */
+
+        /*
+         * int[][] score = {
+         * { 100, 100, 100 },
+         * { 20, 20, 20 },
+         * { 30, 30, 30 },
+         * { 40, 40, 40 }
+         * };
+         * int sum = 0;
+         * 
+         * for (int i = 0; i < score.length; i++) {
+         * for (int j = 0; j < score[i].length; j++) {
+         * System.out.printf("score[%d][%d] = %d\n", i, j, score[i][j]);
+         * }
+         * }
+         * 
+         * for (int[] tmp : score) {
+         * for (int i : tmp) {
+         * sum += i;
+         * }
+         * }
+         * 
+         * System.out.println("sum = " + sum);
+         */
+
         /*
          * int[] code = { -4, -1, 3, 6, 11 };
          * int[] arr = new int[10];
