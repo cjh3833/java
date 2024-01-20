@@ -2,36 +2,55 @@ import java.util.*;
 
 public class Java_Array {
     public static void main(String[] args) {
-
-        int[][] m1 = {
-                { 1, 2, 3 },
-                { 4, 5, 6 }
+        String[][] words = {
+                { "chair", "의자" },
+                { "computer", "컴퓨터" },
+                { "integer", "정수" }
         };
 
-        int[][] m2 = {
-                { 1, 2 },
-                { 3, 4 },
-                { 5, 6 }
-        };
+        Scanner scanner = new Scanner(System.in);
 
-        final int ROW = m1.length;
-        final int COL = m2[0].length;
-        final int M2_ROW = m2.length;
+        for (int i = 0; i < words.length; i++) {
+            System.out.printf("Q%d. %s의 뜻은 ? ", i + 1, words[i][0]);
 
-        int[][] m3 = new int[ROW][COL];
-
-        // 행렬의 곱 m1 * m2의 결과를 m3에 저장
-        for (int i = 0; i < ROW; i++)
-            for (int j = 0; j < COL; j++)
-                for (int k = 0; k < M2_ROW; k++)
-                    m3[i][j] += m1[i][k] * m2[k][j];
-
-        for (int i = 0; i < ROW; i++) {
-            for (int j = 0; j < COL; j++) {
-                System.out.printf("%d ", m3[i][j]);
-            }
-            System.out.println();
+            String tmp = scanner.nextLine();
+            if (tmp.equals(words[i][1]))
+                System.out.println("정답입니다");
+            else
+                System.out.printf("오답입니다, 정답은 %s입니다\n\n", words[i][1]);
         }
+
+        /*
+         * int[][] m1 = {
+         * { 1, 2, 3 },
+         * { 4, 5, 6 }
+         * };
+         * 
+         * int[][] m2 = {
+         * { 1, 2 },
+         * { 3, 4 },
+         * { 5, 6 }
+         * };
+         * 
+         * final int ROW = m1.length;
+         * final int COL = m2[0].length;
+         * final int M2_ROW = m2.length;
+         * 
+         * int[][] m3 = new int[ROW][COL];
+         * 
+         * // 행렬의 곱 m1 * m2의 결과를 m3에 저장
+         * for (int i = 0; i < ROW; i++)
+         * for (int j = 0; j < COL; j++)
+         * for (int k = 0; k < M2_ROW; k++)
+         * m3[i][j] += m1[i][k] * m2[k][j];
+         * 
+         * for (int i = 0; i < ROW; i++) {
+         * for (int j = 0; j < COL; j++) {
+         * System.out.printf("%d ", m3[i][j]);
+         * }
+         * System.out.println();
+         * }
+         */
 
         /*
          * // 예제 5-29 좌표에 x표하기

@@ -119,3 +119,34 @@ char[]toCharArray() | 문자열을 문자배열 (char[])로 변환해서 반환�
 <br><br>
 
 ## 다차원배열
+
+- 2차원 배열을 선언하는 방법은 1차원 배열과 같다, 다만 괄호[]가 하나 더 들어갈 뿐이다
+
+<br><br>
+선언 방법 | 선언 예
+--- | ---
+타입[][] 변수이름 | int[][] score;
+타입 변수이름[][] | int score [][];
+타입[] 변수이름[] | int[] score[];
+---
+
+<br><br>
+
+- score[0][0] = 100;<br>System.out.println(score[0][0]);
+  
+- int[][] arr = new int[][] { {1,2,3} {4,5,6}};<br>int[][] arr = { {1,2,3} , {4,5,6} }; //new int 생략
+
+- int {  <br>{100, 100, 100}, <br> {70, 70, 70},<br>{80, 80, 80},<br>{20, 20, 20}<br>} <br>score.length => 4<br>score[0].length => 3
+
+- for문을 이용하여 2차원 배열 초기화<br>for(int i = 0; i < score.length; i++)<br>_for(int j = 0; j < score[0].length; j++)<br>__score[i][j] = 0;
+
+- 향상된 for문<br>for(int[] tmp : score){<br>for(int i : tmp){<br>sum +=i;<br>}<br>}
+
+<br><br>
+
+## 가변 배열
+- 2차원 이상의 다차원 배열을 생성할 때 전체 배열 차수 중 마지막 차수의 길이를 지정하지 않음
+
+- ex) int [][] score = new int [2][]; //두번째 차원길이 지정x<br>score[0] = new int[4];<br>score[1] = new int[2];
+
+- 선언과 동시에 초기화도 길이별 지정 가능
