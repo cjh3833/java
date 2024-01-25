@@ -210,3 +210,4 @@ int hour1, hour2, hour3; <br>int min1, min2, min3;<br> float second1, second2, s
 
 ### 매개변수 유효성 검사
 - 구현할 때 매개변수의 값이 적절한 것인지 확인, 가능한 모든 경우의 수를 고민하고 그에 대비한 코드를 작성해야한다
+
