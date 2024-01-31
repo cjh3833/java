@@ -1,29 +1,69 @@
 import java.util.*;
 
+class Car {
+    String color;
+    String gearType;
+    int door;
+
+    Car() {
+        this("white", "auto", 4);
+    }
+
+    Car(String color) {
+        this(color, "white", 4);
+    }
+
+    Car(String color, String gearType, int door) {
+        this.color = color;
+        this.gearType = gearType;
+        this.door = door;
+    }
+}
+
 public class Java_Object_Oriented_Programming {
-
-}
-
-class ReturnTest {
     public static void main(String[] args) {
-        ReturnTest r = new ReturnTest();
-
-        int result = r.add(3, 5);
-        System.out.println(result);
-
-        int[] result2 = { 0 }; // 배열을 생성하고 result2[0]의 값을 0으로 초기화
-        r.add(3, 5, result2); // 배열을 add메서드의 매개변수로 전달
-        System.out.println(result2[0]);
-    }
-
-    int add(int a, int b) {
-        return a + b;
-    }
-
-    void add(int c, int d, int[] result) {
-        result[0] = c + d;
+        Car c1 = new Car();
+        Car c2 = new Car("blue");
+        System.out.println("c1의 color = " + c1.color + c1.gearType + c1.door);
+        System.out.println("c2의 color = " + c2.color + c2.gearType + c2.door);
     }
 }
+/*
+ * class Data1 {
+ * int value;
+ * }
+ * 
+ * class Data2 {
+ * int value;
+ * 
+ * Data2(int x) {
+ * value = x;
+ * }
+ * }
+ */
+
+/*
+ * class ReturnTest {
+ * public static void main(String[] args) {
+ * ReturnTest r = new ReturnTest();
+ * 
+ * int result = r.add(3, 5);
+ * System.out.println(result);
+ * 
+ * int[] result2 = { 0 }; // 배열을 생성하고 result2[0]의 값을 0으로 초기화
+ * r.add(3, 5, result2); // 배열을 add메서드의 매개변수로 전달
+ * System.out.println(result2[0]);
+ * }
+ * 
+ * int add(int a, int b) {
+ * return a + b;
+ * }
+ * 
+ * void add(int c, int d, int[] result) {
+ * result[0] = c + d;
+ * }
+ * }
+ */
 
 /*
  * class Tv {
