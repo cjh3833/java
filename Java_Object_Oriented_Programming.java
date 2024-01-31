@@ -1,33 +1,46 @@
 import java.util.*;
 
-class Car {
-    String color;
-    String gearType;
-    int door;
-
-    Car() {
-        this("white", "auto", 4);
-    }
-
-    Car(String color) {
-        this(color, "white", 4);
-    }
-
-    Car(String color, String gearType, int door) {
-        this.color = color;
-        this.gearType = gearType;
-        this.door = door;
-    }
-}
-
 public class Java_Object_Oriented_Programming {
     public static void main(String[] args) {
-        Car c1 = new Car();
-        Car c2 = new Car("blue");
-        System.out.println("c1의 color = " + c1.color + c1.gearType + c1.door);
-        System.out.println("c2의 color = " + c2.color + c2.gearType + c2.door);
+        String[] strArr = { "100", "200", "300" };
+
+        System.out.println(concatenate("", "100", "200", "300"));
+        System.out.println(concatenate("-", strArr));
+        System.out.println(concatenate(",", new String[] { "1", "2", "3" }));
+    }
+
+    static String concatenate(String delim, String... args) {
+        String result = "";
+
+        for (String str : args) {
+            result += str + delim;
+        }
+        return result;
     }
 }
+
+/*
+ * class Car {
+ * String color;
+ * String gearType;
+ * int door;
+ * 
+ * Car() {
+ * this("white", "auto", 4);
+ * }
+ * 
+ * Car(String color) {
+ * this(color, "white", 4);
+ * }
+ * 
+ * Car(String color, String gearType, int door) {
+ * this.color = color;
+ * this.gearType = gearType;
+ * this.door = door;
+ * }
+ * }
+ */
+
 /*
  * class Data1 {
  * int value;
