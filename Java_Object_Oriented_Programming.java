@@ -1,22 +1,37 @@
 import java.util.*;
 
+class BlockTest {
+    static { // 클래스 초기화 블럭
+        System.out.println("static {  }");
+    }
+    { // 인스턴스 초기화 블럭
+        System.out.println("{  }");
+    }
+
+    public BlockTest() {
+        System.out.println("생성자");
+    }
+}
+
 public class Java_Object_Oriented_Programming {
     public static void main(String[] args) {
-        String[] strArr = { "100", "200", "300" };
+        System.out.println("BlockTest bt = new BlockTest();");
+        BlockTest bt = new BlockTest();
 
-        System.out.println(concatenate("", "100", "200", "300"));
-        System.out.println(concatenate("-", strArr));
-        System.out.println(concatenate(",", new String[] { "1", "2", "3" }));
+        System.out.println("BLockTest bt2 = new BlockTEst()");
+        BlockTest bt2 = new BlockTest();
     }
 
-    static String concatenate(String delim, String... args) {
-        String result = "";
-
-        for (String str : args) {
-            result += str + delim;
-        }
-        return result;
-    }
+    /*
+     * static String concatenate(String delim, String... args) {
+     * String result = "";
+     * 
+     * for (String str : args) {
+     * result += str + delim;
+     * }
+     * return result;
+     * }
+     */
 }
 
 /*
