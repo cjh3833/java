@@ -1,54 +1,111 @@
 import java.util.*;
 
-class TV {
-    boolean power;
-    int channel;
-
-    void power() {
-        power = !power;
-    };
-
-    void channelUP() {
-        ++channel;
-    };
-
-    void channelDown() {
-        --channel;
-    };
-}
-
-class VCR {
-    boolean power;
-    int counter = 0;
-
-    void power() {
-        power = !power;
-    };
-
-    void play() {
-    };
-
-    void stop() {
-    };
-
-    void rew() {
-    };
-
-    void ff() {
-    };
-}
-
-class TVCR extends TV {
-    VCR vcr = new VCR();
-
-    void play() {
-        vcr.play();
-    }
-
-    void stop() {
-        vcr.stop();
+class PointTest {
+    public static void main(String[] args) {
+        Point3D p3 = new Point3D();
+        System.out.println("p3.x = " + p3.x);
+        System.out.println("p3.y = " + p3.y);
+        System.out.println("p3.z = " + p3.z);
     }
 }
+
+class Point {
+    int x = 10;
+    int y = 20;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Point3D extends Point {
+    int z;
+
+    Point3D() {
+        this(100, 200, 300);
+    }
+
+    Point3D(int x, int y, int z) {
+        super(x, y);
+        this.z = z;
+    }
+}
+
+/*
+ * class SuperText {
+ * public static void main(String[] args) {
+ * Child c = new Child();
+ * c.method();
+ * }
+ * }
+ * 
+ * class Parent {
+ * int x = 10;
+ * }
+ * 
+ * class Child extends Parent {
+ * int x = 20;
+ * 
+ * void method() {
+ * System.out.println("x = " + x);
+ * System.out.println("this.x = " + this.x); // 자손클래스에서 선언된 멤버변수 20
+ * System.out.println("super.x = " + super.x); // 상속이니까 10
+ * }
+ * }
+ */
+
+/*
+ * class TV {
+ * boolean power;
+ * int channel;
+ * 
+ * void power() {
+ * power = !power;
+ * };
+ * 
+ * void channelUP() {
+ * ++channel;
+ * };
+ * 
+ * void channelDown() {
+ * --channel;
+ * };
+ * }
+ * 
+ * class VCR {
+ * boolean power;
+ * int counter = 0;
+ * 
+ * void power() {
+ * power = !power;
+ * };
+ * 
+ * void play() {
+ * };
+ * 
+ * void stop() {
+ * };
+ * 
+ * void rew() {
+ * };
+ * 
+ * void ff() {
+ * };
+ * }
+ * 
+ * class TVCR extends TV {
+ * VCR vcr = new VCR();
+ * 
+ * void play() {
+ * vcr.play();
+ * }
+ * 
+ * void stop() {
+ * vcr.stop();
+ * }
+ * }
+ */
 
 /*
  * class DrawShape {
