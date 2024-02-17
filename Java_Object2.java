@@ -1,12 +1,75 @@
 import static java.lang.System.out;
 import static java.lang.Math.*;
 
-class exImport {
+class InstanceofTest {
     public static void main(String[] args) {
-        out.println(random());
-        out.println("Math.PI : " + PI);
+        FireEngine fe = new FireEngine();
+
+        if (fe instanceof FireEngine) {
+            System.out.println("This is a FireEngine instance");
+        }
+
+        if (fe instanceof Car) {
+            System.out.println("This is a Car instance");
+        }
+
+        if (fe instanceof Object) {
+            System.out.println("This is an Object instance");
+        }
     }
 }
+
+class Car {
+
+}
+
+class FireEngine extends Car {
+
+}
+
+/*
+ * class CastingTest1 {
+ * public static void main(String[] args) {
+ * Car car = null;
+ * Car car2 = null;
+ * FireEngine fe = null;
+ * 
+ * car.drive();
+ * fe = (FireEngine) car;
+ * fe.drive();
+ * car2 = fe;
+ * car2.drive();
+ * }
+ * }
+ * 
+ * class Car {
+ * String color;
+ * int door;
+ * 
+ * void drive() {
+ * System.out.println("drive, brr~");
+ * }
+ * 
+ * void stop() {
+ * System.out.println("stop!!");
+ * }
+ * }
+ * 
+ * class FireEngine extends Car {
+ * void water() {
+ * System.out.println("water!!!");
+ * }
+ * }
+ */
+
+/*
+ * class exImport {
+ * public static void main(String[] args) {
+ * out.println(random());
+ * out.println("Math.PI : " + PI);
+ * }
+ * }
+ */
 
 /*
  * class ImportTest {
