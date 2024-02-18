@@ -337,3 +337,7 @@ if (c instanceof FireEngine) { }
 <br><br>
 
 1. 어떤 타입에 대한 instanceof연산의 결과가 true라는 것은 검사한 타입으로 형변환이 가능하다는 것을 말함
+
+<br><br>
+
+## 참조변수와 인스턴스의 연결
