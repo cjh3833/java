@@ -1,31 +1,126 @@
 import static java.lang.System.out;
 import static java.lang.Math.*;
 
-class InstanceofTest {
-    public static void main(String[] args) {
-        FireEngine fe = new FireEngine();
+class Product {
+    int price;
+    int bonusPoint;
 
-        if (fe instanceof FireEngine) {
-            System.out.println("This is a FireEngine instance");
-        }
-
-        if (fe instanceof Car) {
-            System.out.println("This is a Car instance");
-        }
-
-        if (fe instanceof Object) {
-            System.out.println("This is an Object instance");
-        }
+    Product(int price) {
+        this.price = price;
+        bonusPoint = (int) (price / 10.0);
     }
 }
 
-class Car {
+class Tv extends Product {
+    Tv() {
+        super(100);
+    }
 
+    public String toString() {
+        return "TV";
+    }
 }
 
-class FireEngine extends Car {
+class Computer extends Product {
+    Computer() {
+        super(200);
+    }
 
+    public String toString() {
+        return "Computer";
+    }
 }
+
+class Buyer {
+    int money = 1000;
+    int bonusPoint = 0;
+
+    void buy(Product p) {
+        if (money < p.price) {
+            System.out.println("잔액 부족");
+            return;
+        }
+
+        money -= p.price;
+        bonusPoint += p.bonusPoint;
+        System.out.println("물건을 구입하였습니다 : " + p);
+    }
+}
+
+class PolyArgumentTest {
+    public static void main(String[] args) {
+        Buyer b = new Buyer();
+        b.buy(new Tv());
+        b.buy(new Computer());
+
+        System.out.println("현재 남은 돈은 : " + b.money + "입니다");
+        System.out.println("현재 보너스 점수는 : " + b.bonusPoint + "입니다");
+
+    }
+}
+
+/*
+ * class BindingTest {
+ * public static void main(String[] args) {
+ * Parent p = new Parent();
+ * Child c = new Child();
+ * ChildChild cc = new ChildChild();
+ * 
+ * System.out.println("p.x = " + p.x);
+ * System.out.println("c.x = " + c.x);
+ * p.method();
+ * c.method();
+ * cc.method();
+ * }
+ * }
+ * 
+ * class Parent {
+ * int x = 100;
+ * 
+ * void method() {
+ * System.out.println("Parent method");
+ * }
+ * }
+ * 
+ * class Child extends Parent {
+ * int x = 200;
+ * 
+ * void method() {
+ * System.out.println("Child method");
+ * }
+ * }
+ * 
+ * class ChildChild extends Parent {
+ * }
+ */
+
+/*
+ * class InstanceofTest {
+ * public static void main(String[] args) {
+ * FireEngine fe = new FireEngine();
+ * 
+ * if (fe instanceof FireEngine) {
+ * System.out.println("This is a FireEngine instance");
+ * }
+ * 
+ * if (fe instanceof Car) {
+ * System.out.println("This is a Car instance");
+ * }
+ * 
+ * if (fe instanceof Object) {
+ * System.out.println("This is an Object instance");
+ * }
+ * }
+ * }
+ * 
+ * class Car {
+ * 
+ * }
+ * 
+ * class FireEngine extends Car {
+ * 
+ * }
+ */
 
 /*
  * class CastingTest1 {
