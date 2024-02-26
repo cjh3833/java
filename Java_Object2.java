@@ -1,63 +1,231 @@
-import static java.lang.System.out;
-import static java.lang.Math.*;
-
-class Product {
-    int price;
-    int bonusPoint;
-
-    Product(int price) {
-        this.price = price;
-        bonusPoint = (int) (price / 10.0);
-    }
-}
-
-class Tv extends Product {
-    Tv() {
-        super(100);
-    }
-
-    public String toString() {
-        return "TV";
-    }
-}
-
-class Computer extends Product {
-    Computer() {
-        super(200);
-    }
-
-    public String toString() {
-        return "Computer";
-    }
-}
-
-class Buyer {
-    int money = 1000;
-    int bonusPoint = 0;
-
-    void buy(Product p) {
-        if (money < p.price) {
-            System.out.println("잔액 부족");
-            return;
-        }
-
-        money -= p.price;
-        bonusPoint += p.bonusPoint;
-        System.out.println("물건을 구입하였습니다 : " + p);
-    }
-}
-
-class PolyArgumentTest {
+class RepairableTest {
     public static void main(String[] args) {
-        Buyer b = new Buyer();
-        b.buy(new Tv());
-        b.buy(new Computer());
-
-        System.out.println("현재 남은 돈은 : " + b.money + "입니다");
-        System.out.println("현재 보너스 점수는 : " + b.bonusPoint + "입니다");
-
+        Tank tank = new Tank();
+        Dropship dropship = new Dropship();
+        Marine marine = new Marine();
+        SCV scv = new SCV();
+        scv.repair(tank);
+        scv.repair(dropship);
     }
 }
+
+interface Repairable {
+
+}
+
+class Unit {
+    int hitPoint;
+    final int MAX_HP;
+
+    Unit(int hp) {
+        MAX_HP = hp;
+    }
+}
+
+class GroundUnit extends Unit {
+    GroundUnit(int hp) {
+        super(hp);
+    }
+}
+
+class AirUnit extends Unit {
+    AirUnit(int hp) {
+        super(hp);
+    }
+}
+
+class Tank extends GroundUnit implements Repairable {
+    Tank() {
+        super(150);
+        hitPoint = MAX_HP;
+    }
+
+    public String toString() {
+        return "Tank";
+    }
+}
+
+class Dropship extends AirUnit implements Repairable {
+    Dropship() {
+        super(125);
+        hitPoint = MAX_HP;
+    }
+
+    public String toString() {
+        return "Dropship";
+    }
+}
+
+class Marine extends GroundUnit {
+    Marine() {
+        super(40);
+        hitPoint = MAX_HP;
+    }
+}
+
+class SCV extends GroundUnit implements Repairable {
+    SCV() {
+        super(60);
+        hitPoint = MAX_HP;
+    }
+
+    void repair(Repairable r) {
+        if (r instanceof Unit) {
+            Unit u = (Unit) r;
+            while (u.hitPoint != u.MAX_HP) {
+                u.hitPoint++;
+            }
+            System.out.println(u.toString() + "의 수리가 끝났습니다");
+        }
+    }
+}
+/*
+ * interface Parseable {
+ * // 구문 분석작업을 수행한다
+ * public abstract void parse(String fileName);
+ * }
+ * 
+ * class ParserManager {
+ * // 리턴타입이 Parseable인터페이스이다
+ * public static Parseable getParser(String type) {
+ * if (type.equals("XML"))
+ * return new XMLParser();
+ * else {
+ * Parseable p = new HTMLParser();
+ * return p;
+ * }
+ * }
+ * }
+ * 
+ * class XMLParser implements Parseable {
+ * public void parse(String fileName) {
+ * System.out.println(fileName + " XML parsing completed");
+ * }
+ * }
+ * 
+ * class HTMLParser implements Parseable {
+ * public void parse(String fileName) {
+ * System.out.println(fileName + " HTML parsing completed");
+ * }
+ * }
+ * 
+ * class ParserTest {
+ * public static void main(String[] args) {
+ * Parseable parser = ParserManager.getParser("XML");
+ * parser.parse("document.XML");
+ * parser = ParserManager.getParser("HTML");
+ * parser.parse("document2.html");
+ * Parseable parser1 = new XMLParser();
+ * parser1.parse("ds");
+ * }
+ * }
+ */
+
+/*
+ * class FighterTest {
+ * public static void main(String[] args) {
+ * Fighter f = new Fighter();
+ * if (f instanceof Unit)
+ * System.out.println("Unit클래스의 자손");
+ * if (f instanceof Fightable)
+ * System.out.println("Fightable클래스의 자손");
+ * if (f instanceof Movable)
+ * System.out.println("Movable클래스의 자손");
+ * if (f instanceof Attackable)
+ * System.out.println("Attackable클래스의 자손");
+ * if (f instanceof Object)
+ * System.out.println("Object클래스의 자손");
+ * }
+ * }
+ * 
+ * class Fighter extends Unit implements Fightable {
+ * public void move(int x, int y) {
+ * 
+ * }
+ * 
+ * public void attack(Unit u) {
+ * 
+ * }
+ * }
+ * 
+ * class Unit {
+ * int currentHP;
+ * int x;
+ * int y;
+ * }
+ * 
+ * interface Fightable extends Movable, Attackable {
+ * 
+ * }
+ * 
+ * interface Movable {
+ * void move(int x, int y);
+ * }
+ * 
+ * interface Attackable {
+ * void attack(Unit u);
+ * }
+ */
+
+/*
+ * class Product {
+ * int price;
+ * int bonusPoint;
+ * 
+ * Product(int price) {
+ * this.price = price;
+ * bonusPoint = (int) (price / 10.0);
+ * }
+ * }
+ * 
+ * class Tv extends Product {
+ * Tv() {
+ * super(100);
+ * }
+ * 
+ * public String toString() {
+ * return "TV";
+ * }
+ * }
+ * 
+ * class Computer extends Product {
+ * Computer() {
+ * super(200);
+ * }
+ * 
+ * public String toString() {
+ * return "Computer";
+ * }
+ * }
+ * 
+ * class Buyer {
+ * int money = 1000;
+ * int bonusPoint = 0;
+ * 
+ * void buy(Product p) {
+ * if (money < p.price) {
+ * System.out.println("잔액 부족");
+ * return;
+ * }
+ * 
+ * money -= p.price;
+ * bonusPoint += p.bonusPoint;
+ * System.out.println("물건을 구입하였습니다 : " + p);
+ * }
+ * }
+ * 
+ * class PolyArgumentTest {
+ * public static void main(String[] args) {
+ * Buyer b = new Buyer();
+ * b.buy(new Tv());
+ * b.buy(new Computer());
+ * 
+ * System.out.println("현재 남은 돈은 : " + b.money + "입니다");
+ * System.out.println("현재 보너스 점수는 : " + b.bonusPoint + "입니다");
+ * 
+ * }
+ * }
+ */
 
 /*
  * class BindingTest {
