@@ -522,3 +522,7 @@ JDK1.8부터 디폴트메서드, static메서드를 추가할 수 있게 됨
 <br>
 기존<br>
 interface MyInterface{<br>void method();<br>void newMethod(); //추상메서드<br>}<br><br>디폴트메서드<br>interface MyInterface{<br>void method();<br>default void newMethod(){}<br>}
+
+<br><br><br>
+
+# 내부 클래스(inner class)
