@@ -1,84 +1,189 @@
-class RepairableTest {
-    public static void main(String[] args) {
-        Tank tank = new Tank();
-        Dropship dropship = new Dropship();
-        Marine marine = new Marine();
-        SCV scv = new SCV();
-        scv.repair(tank);
-        scv.repair(dropship);
-    }
-}
-
-interface Repairable {
-
-}
-
-class Unit {
-    int hitPoint;
-    final int MAX_HP;
-
-    Unit(int hp) {
-        MAX_HP = hp;
-    }
-}
-
-class GroundUnit extends Unit {
-    GroundUnit(int hp) {
-        super(hp);
-    }
-}
-
-class AirUnit extends Unit {
-    AirUnit(int hp) {
-        super(hp);
-    }
-}
-
-class Tank extends GroundUnit implements Repairable {
-    Tank() {
-        super(150);
-        hitPoint = MAX_HP;
+class Outer {
+    class InstanceInner {
+        int iv = 100;
     }
 
-    public String toString() {
-        return "Tank";
-    }
-}
-
-class Dropship extends AirUnit implements Repairable {
-    Dropship() {
-        super(125);
-        hitPoint = MAX_HP;
+    static class StaticInner {
+        int iv = 200;
+        static int cv = 300;
     }
 
-    public String toString() {
-        return "Dropship";
-    }
-}
-
-class Marine extends GroundUnit {
-    Marine() {
-        super(40);
-        hitPoint = MAX_HP;
-    }
-}
-
-class SCV extends GroundUnit implements Repairable {
-    SCV() {
-        super(60);
-        hitPoint = MAX_HP;
-    }
-
-    void repair(Repairable r) {
-        if (r instanceof Unit) {
-            Unit u = (Unit) r;
-            while (u.hitPoint != u.MAX_HP) {
-                u.hitPoint++;
-            }
-            System.out.println(u.toString() + "의 수리가 끝났습니다");
+    void myMethod() {
+        class LocalInner {
+            int iv = 400;
         }
     }
 }
+
+class InnerEx4 {
+    public static void main(String[] args) {
+        // 인스턴스 클래스의 인스턴스를 생성하려면 외부 클래스의 인스턴스를 먼저 생성해야한다
+        Outer oc = new Outer();
+        Outer.InstanceInner ii = oc.new InstanceInner();
+
+        System.out.println("ii.iv : " + ii.iv);
+        System.out.println("Outer.StaticInner.cv : " + Outer.StaticInner.cv);
+
+        // 스태틱내부 클래스의 인스턴스는 외부 클래스를 먼저 생성하지 않아도 된다
+        Outer.StaticInner si = new Outer.StaticInner();
+        System.out.println("si.iv : " + si.iv);
+    }
+}
+
+/*
+ * class InnerEx3 {
+ * private int outerIv = 0;
+ * static int outerCv = 0;
+ * 
+ * class InstanceInner {
+ * int iiv = outerIv; // 외부클래스의 private 멤버도 접근가능
+ * int iiv2 = outerCv;
+ * }
+ * 
+ * static class StaticIneer {
+ * // 스태틱 클래스는 외부 클래스의 인스턴스 멤버에 접근할수없다
+ * // int siv = outerIv;
+ * static int scv = outerCv;
+ * }
+ * 
+ * void myMethod() {
+ * int lv = 0;
+ * final int LV = 0;
+ * 
+ * class LocalInner {
+ * int liv = outerIv;
+ * int liv2 = outerCv;
+ * 
+ * // int liv3 = lv;
+ * int liv4 = LV;
+ * }
+ * }
+ * }
+ */
+
+/*
+ * class InnerEx2 {
+ * class InstanceInner {
+ * }
+ * 
+ * static class StaticInner {
+ * }
+ * 
+ * // 인스턴스멤버 간에는 서로 직접 접근이 가능
+ * InstanceInner iv = new InstanceInner();
+ * 
+ * // static멤버 간에는 서로 직접 접근 가능
+ * static StaticInner cv = new StaticInner();
+ * 
+ * static void staticMethod() {
+ * // static멤버는 인스턴스멤버에 직접 접근할 수 없다
+ * // InstanceInner obj1 = new InstanceInner();
+ * StaticInner obj2 = new StaticInner();
+ * 
+ * InnerEx2 outer = new InnerEx2();
+ * InstanceInner obj1 = outer.new InstanceInner();
+ * }
+ * 
+ * void instanceMethod() {
+ * // 인스턴스메서드에서는 인스턴스 멤버와 static멤버 모두 접근이가능
+ * InstanceInner obj1 = new InstanceInner();
+ * StaticInner obj2 = new StaticInner();
+ * // 메서드 내에 지역적으로 선언된 내부클래스는 외부에서 접근할 수 없다
+ * // LocalInner lv = new LocalInner();
+ * }
+ * 
+ * void myMethod() {
+ * class LocalInner {
+ * }
+ * LocalInner lv = new LocalInner();
+ * }
+ * }
+ */
+
+/*
+ * class RepairableTest {
+ * public static void main(String[] args) {
+ * Tank tank = new Tank();
+ * Dropship dropship = new Dropship();
+ * Marine marine = new Marine();
+ * SCV scv = new SCV();
+ * scv.repair(tank);
+ * scv.repair(dropship);
+ * }
+ * }
+ * 
+ * interface Repairable {
+ * 
+ * }
+ * 
+ * class Unit {
+ * int hitPoint;
+ * final int MAX_HP;
+ * 
+ * Unit(int hp) {
+ * MAX_HP = hp;
+ * }
+ * }
+ * 
+ * class GroundUnit extends Unit {
+ * GroundUnit(int hp) {
+ * super(hp);
+ * }
+ * }
+ * 
+ * class AirUnit extends Unit {
+ * AirUnit(int hp) {
+ * super(hp);
+ * }
+ * }
+ * 
+ * class Tank extends GroundUnit implements Repairable {
+ * Tank() {
+ * super(150);
+ * hitPoint = MAX_HP;
+ * }
+ * 
+ * public String toString() {
+ * return "Tank";
+ * }
+ * }
+ * 
+ * class Dropship extends AirUnit implements Repairable {
+ * Dropship() {
+ * super(125);
+ * hitPoint = MAX_HP;
+ * }
+ * 
+ * public String toString() {
+ * return "Dropship";
+ * }
+ * }
+ * 
+ * class Marine extends GroundUnit {
+ * Marine() {
+ * super(40);
+ * hitPoint = MAX_HP;
+ * }
+ * }
+ * 
+ * class SCV extends GroundUnit implements Repairable {
+ * SCV() {
+ * super(60);
+ * hitPoint = MAX_HP;
+ * }
+ * 
+ * void repair(Repairable r) {
+ * if (r instanceof Unit) {
+ * Unit u = (Unit) r;
+ * while (u.hitPoint != u.MAX_HP) {
+ * u.hitPoint++;
+ * }
+ * System.out.println(u.toString() + "의 수리가 끝났습니다");
+ * }
+ * }
+ * }
+ */
+
 /*
  * interface Parseable {
  * // 구문 분석작업을 수행한다
