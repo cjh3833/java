@@ -93,3 +93,11 @@ catch블럭의 괄호 내에 선언된 변수는 catch블럭 내에서만 유효
 <br><br>
 
 ### finally블럭
+- finally블럭은 예외의 발생여부에 상관없이 실행되어야할 코드를 포함시킬 목적으로 사용
+- try-catch문의 끝에 선택적으로 덧붙여 사용할 수 있으며, try-catch-finally의 순서로 구성
+
+- 예외가 발생한 경우에는 try-catch-finally의 순으로 실행
+- 예외가 발생하지 않은 경우에는 try-finally의 순으로 실행
+
+- try블럭에서 return문이 실행되는 경우에도 finally블럭의 문장들이 먼저 실행된 후 현재 실행중인 메서드를 종료
+- catch블럭의 문장 수행 중 return문을 만나도 finally블럭의 문장들은 수행된다
