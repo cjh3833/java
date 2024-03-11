@@ -1,5 +1,43 @@
-/* 예제 9-7 */
-class Point implements Cloneable {
+class Circle implements Cloneable {
+    Point p;
+    double r;
+
+    Circle(Point p, double r) {
+        this.p = p;
+        this.r = r;
+    }
+
+    public Circle shallowCopy() { // 얕은 복사
+        Object obj = null;
+        try {
+            obj = super.clone();
+        } catch (CloneNotSupportedException e) {
+
+        }
+
+        return (Circle) obj;
+    }
+
+    public Circle deepCopy() { // 깊은 복사
+        Object obj = null;
+        try {
+            obj = super.clone();
+        } catch (CloneNotSupportedException e) {
+
+        }
+
+        Circle c = (Circle) obj;
+        c.p = new Point(this.p.x, this.p.y);
+
+        return c;
+    }
+
+    public String toString() {
+        return "(p = " + p + ", r = " + r + ")";
+    }
+}
+
+class Point {
     int x, y;
 
     Point(int x, int y) {
@@ -8,31 +46,81 @@ class Point implements Cloneable {
     }
 
     public String toString() {
-        return "X = " + x + ", Y = " + y;
-    }
-
-    public Object clone() {
-        Object obj = null;
-        try {
-            obj = super.clone(); // clone()은 반드시 예외처리 해줘야한다
-        } catch (CloneNotSupportedException e) {
-
-        }
-        return obj;
+        return "(" + x + ", " + y + ")";
     }
 }
 
-class CloneEx1 {
+class ShallowDeepCopy {
     public static void main(String[] args) {
-        Point original = new Point(3, 5);
-        Point copy = (Point) original.clone(); // 복제(clone)해서 새로운 객체 생성, clone은 Object메서드니까 point로 형변환
+        Circle c1 = new Circle(new Point(1, 1), 2.0);
+        Circle c2 = c1.shallowCopy();
+        Circle c3 = c1.deepCopy();
 
-        System.out.println(original);
-        System.out.println(copy);
-        System.out.println(original.hashCode());
-        System.out.println(copy.hashCode());
+        System.out.println("c1 = " + c1);
+        System.out.println("c2 = " + c2);
+        System.out.println("c3 = " + c3);
+
+        c1.p.x = 9; // 작동방식 ?
+        c1.p.y = 9;
+
+        System.out.println("c1의 값 변경 후");
+
+        System.out.println("c1 = " + c1); // 원본은 그대로 갈거고
+        System.out.println("c2 = " + c2); // 얕은 복사는 원본따라 바뀔거고
+        System.out.println("c3 = " + c3); // 깊은 복사는 원본이랑 다르게 값 유지할거고
     }
 }
+
+// /* 예제 9-8 */
+// import java.util.*;
+
+// class CloneEx2 {
+// public static void main(String[] args) {
+// int[] arr = { 1, 2, 3, 4, 5 };
+// int[] arrClone = arr.clone(); // 배열 arr을 복제
+// arrClone[0] = 6;
+
+// System.out.println(Arrays.toString(arr));
+// System.out.println(Arrays.toString(arrClone));
+// }
+// }
+
+// /* 예제 9-7 */
+// class Point implements Cloneable {
+// int x, y;
+
+// Point(int x, int y) {
+// this.x = x;
+// this.y = y;
+// }
+
+// public String toString() {
+// return "X = " + x + ", Y = " + y;
+// }
+
+// public Object clone() {
+// Object obj = null;
+// try {
+// obj = super.clone(); // clone()은 반드시 예외처리 해줘야한다
+// } catch (CloneNotSupportedException e) {
+
+// }
+// return obj;
+// }
+// }
+
+// class CloneEx1 {
+// public static void main(String[] args) {
+// Point original = new Point(3, 5);
+// Point copy = (Point) original.clone(); // 복제(clone)해서 새로운 객체 생성, clone은
+// Object메서드니까 point로 형변환
+
+// System.out.println(original);
+// System.out.println(copy);
+// System.out.println(original.hashCode());
+// System.out.println(copy.hashCode());
+// }
+// }
 
 /* 예제 9-6 */
 // class Card {
