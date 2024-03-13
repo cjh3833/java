@@ -3,7 +3,7 @@
 
 <br><br>
 
-### Object 클래스
+## Object 클래스
 - Object클래스는 모든 클래스의 최고 조상이기 때문에 Object클래스의 멤버들은 모든 클래스에서 바로 사용가능하다
 
 Object클래스의 메서드 | 설 명
@@ -111,10 +111,41 @@ public String toString(){
 ### getClass()
 - 자신이 속한 클래스의 Class객체를 반환하는 메서드, Class객체는 이름이 'Class'인 클래스의 객체이다, Class클래스는 아래와 같이 정의되어있다
 
-<pre>
-<code>
+```
 public final class Class implements...{ //Class클래스<
     ...
 }
-</code>
-<pre>
+```
+
+- 클래스 파일을 읽어서 사용하기 편한 형태로 저장해 놓은 것이 클래스객체
+
+### 클래스 객체를 얻는 방법
+
+```
+Class cObj = new Card().getClass(); //생성된 객체로부터 얻는 방법
+```
+
+```
+Class cObj = Card.class; //클래스 리터럴(*.class)로 부터 얻는 방법
+```
+
+```
+Class cObj = Class.forName("Card"); //클래스의 이름으로부터 얻는 방법
+```
+
+
+Class객체를 이용하면 클래스에 정의된 멤버의 이름이나 개수 등 클래스에 대한 모든 정보를 얻을 수 있기 때문에 Class객체를 통해 객체를 생성하고 메서드를 호출하는 등 보다 동적인 코드 사용가능
+
+<br>
+
+```
+Card c = new Card(); //new연산자를 이용해서 객체생성
+```
+
+```
+Card c = new Card.class.newInstance(); //Class객체를 이용해서 객체생성
+```
+
+<br><br>
+
+## String 클래스
