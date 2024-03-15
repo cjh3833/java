@@ -149,3 +149,5 @@ Card c = new Card.class.newInstance(); //Class객체를 이용해서 객체생�
 <br><br>
 
 ## String 클래스
+
+되는지 확인
