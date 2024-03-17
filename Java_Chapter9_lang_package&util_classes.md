@@ -150,4 +150,253 @@ Card c = new Card.class.newInstance(); //Class객체를 이용해서 객체생�
 
 ## String 클래스
 
-되는지 확인
+★String 클래스는 중요하니 여러 번 보기★
+
+<br>
+
+### 변경 불가능한(immutable)클래스
+- String 클래스에는 문자열을 저장하기 위해 문자형 배열 참조변수(char[]) value를 인스턴스 변수로 정의해놓고 있다
+
+(참고) String클래스는 앞에 final이 붙어있어서 다른 클래스의 조상이 될 수 없다
+
+```
+public final class String implements java.io.Seializable, Comparable{
+    private char[] value;
+    ...
+}
+```
+
+<br>
+
+- 한 번 생성된 String 인스턴스가 가지고 있는 문자열은 읽어 올 수만 있고 변경은 못한다 (Read Only)
+
+<br>
+
+```
+String a = "a";
+String b = "b";
+       a = a + b;
+```
+
+0x100 -> "a"<br>
+0x200 -> "b"<br><br>
+0x300 -> "ab"<br>
+새로운 String인스턴스 생성
+
+<br>
+
+- 문자열간의 결합, 추출, 문자열을 다루는 작업이 많을 경우 StringBuffer클래스를 사용
+- StringBuffer 인스턴스에 저장된 문자열은 변경가능, 1개의 인스턴스로 문자열을 다루는 게 가능
+
+<br><br>
+
+### 문자열의 비교
+문자열을 만드는 방법은
+1. 문자열 리터럴을 지정하는 방법
+2. String 클래스의 생성자 사용해서 만드는 방법
+
+```
+String str1 = "abc"; //문자열 리터럴 "abc" 주소가 str1에 저장
+String str2 = "abc"; //문자열 리터럴 "abc" 주소가 str2에 저장
+String str3 = new String("abc"); //새로운 String인스턴스 생성
+String str4 = new String("abc"); //새로운 String인스턴스 생성
+```
+<br>
+
+- 문자열 리터럴- 이미 존재하는 것을 재사용
+  - str1 == str2
+  - 0x100 == 0x100
+  - True
+- String클래스 생성자 - 항상 새로운 String인스턴스 생성
+  - str3 == str4
+  - 0x200 == 0x300
+  - False
+
+<br>
+
+문자열 == ->주소값 비교<br>
+문자열 equals -> 내용물 비교
+
+- 자바소스에 포함된 모든 문자열 리터럴은 컴파일 시에 클래스 파일에 저장
+
+<br><br>
+
+### 빈 문자열(empty stirng)
+- String s = ""; 가능
+- char형 변수에는 반드시 하나의 문자를 지정
+
+```
+String s = ""; //빈 문자열로 초기화
+char c = ' '; 공백으로 초기화
+```
+
+<br><br>
+
+### String 클래스의 생성자와 메서드
+- String(string s)
+
+- String(char[] value)
+- String(StringBuffer buf)
+- char charAt(int index)
+- int compareTo(String str)
+- String concat(String str)
+- boolean endsWith(String suffix)
+- boolean equals(Object obj)
+- boolean equalsIgnoreCase(String str)
+- int indexOf(int ch)
+- int indexOf(int ch, int pos)
+- int indexOf(String str)
+- String intern()
+- int lastIndexOf(int ch)
+- int lastIndexOf(String str)
+- int length()
+- String replace(char old, char nw)
+- String replace(CharSequence old, CharSequence nw)
+- String replaceAll(String regex, String replacement)
+- String[] split(String regex)
+- String[] split(String regex, int limit)
+- boolean startsWith(String prefix)
+- String substring(int begin)<br>String substring(int begin, int end)
+- String toLowerCase()
+- String toString()
+- String toUpperCase()
+- String trim()
+
+- static String valueOf()
+
+<br><br>
+
+### join()과 StringJoiner
+- join()은 여러 문자열 사이에 구분자를 넣어서 결합
+- split()와 반대의 작업
+
+<br><br>
+
+### String.format()
+
+- format()은 형식화된 문자열을 만들어내는 간단한 방법
+- printf()하고 사용법이 완전 똑같다
+
+```
+String str = String.format(%d 더하기 %d는 %d입니다.", 3, 5, 3+5)
+System.out.println(str); //3 더하기 5는 8입니다
+```
+
+<br><br>
+
+### 기본형 값을 String으로 변환
+
+- 기본형을 문자열로 변경하는 방법은 숫자에 빈 문자열 ""을 더해준다
+- valueOf()를 이용하는 방법도 있음
+
+```
+int i = 100;
+String str1 = i + "";
+String str2 = String.valueOf(i);
+```
+
+<br><br>
+
+
+### String을 기본형 값으로 변환
+- valueOf() 사용
+- parseInt() 사용
+
+```
+int i = Integer.parseInt("100");
+int i2 = Integer.valueOf("100");
+```
+
+기본형 -> 문자열 | 문자열 -> 기본형
+--- | ---
+String String.valueOf(boolean b)<br>String String.valueOf(char c)<br>String String.valueOf(int i)<br>String String.valueOf(long i)<br>String String.valueOf(float f)<br>String String.valueOf(double d) | boolean Boolean.parseBoolean(String s)<br> byte Byte.parseByte(String s)<br>short Short.parseShort(String s)<br>int Integer.parseInt(String s)<br>long Long.parseLong(String s)<br>float Float.parseFloat(Stirng s)<br>double Double.parseDouble(String s)
+----
+이 변환들은 프로그래밍에서 반드시 알고 있어야 하는 아주 중요한 내용
+
+<br><br>
+
+### StringBuffer 클래스와 StringBuilder클래스
+- String클래스는 인스턴스를 생성할 때 지정된 문자열 변경x
+- StringBuffer클래스는 변경가능
+
+- StringBuffer인스턴스가 생성될 때, char형 배열이 생성되며, 이 때 생성된 char형 배열을 인스턴스 변수 value가 참조하게됨
+
+```
+public final class StringBuffer implements java.io.Serializble{
+    private char[] value;
+    ...
+}
+```
+
+<br><br>
+
+### StringBuffer의 생성자
+- StringBuufer 클래스의 인스턴스를 생성할 때, 적절한 길이의 char형 배열이 생성되고 이 배열은 문자열을 저장하고 편집하기 위한 공간(Buffer)로 사용된다
+
+- StringBuffer 인스턴스를 생성할 때 생성자 StringBuffer(int length)를 사용해서 저장될 문자열의 길이를 고려해서 여유있는 크기로 지정하는 것이 좋다
+
+- 버퍼의 크기를 지정해주지 않으면 16개의 문자를 저장할 수 있는 크기의 버퍼를 생성
+
+```
+public StringBuffer(int length){
+    value = new char[length];
+    shared = false;
+}
+
+public StringBuffer(){
+    this(16); // 버퍼 크기를 지정하지 않으면 크기는 16
+}
+
+public StringBuffer(String str){
+    this(str.length() + 16); // 지정한 문자열의 길이보다 16 더 크게 버퍼 생성
+    append(str);
+}
+```
+
+
+<br><br>
+
+### StringBuffer의 변경
+- StringBuffer는 내용 변경 가능
+
+```
+StringBuffer sb = new StringBuffer("abc");
+
+sb.append("123"); // sb 내용 뒤에 "123" 추가
+
+StringBuffer sb2 = sb.append("ZZ");
+System.out.println("sb"); // abc123ZZ
+System.out.println("sb2"); //abc123ZZ
+```
+
+sb, sb2는 같은 주소 참조
+
+<br><br>
+
+### StringBuffer의 비교
+
+- String 클래스에서는 equals메서드를 오버라이딩해서 문자열의 내용을 비교하도록 구현
+- StringBuffer클래스는 equals메서드를 오버라이딩하지 않아서 StringBuffer클래스의 equals메서드를 사용해도 등가비교연산자(==)로 비교한 것과 같은 결과
+
+```
+StringBuffer sb = new StringBuffer("abc");
+StringBuffer sb2 = new StringBuffer("abc");
+
+System.out.println(sb == sb2); //false
+Systme.out.println(sb.equals(sb2)); //false
+```
+
+<br>
+
+- 반면 toString()은 오버라이딩 되어있어 StringBuffer인스턴스에 toStirng()을 호출하면 담고있는 문자열을 String으로 반환한다
+
+- String인스턴스에 담긴 문자열을 비교하기 위해선 StringBuffer 인스턴스에서 toString()을 호출한 뒤 String인스턴스를 얻은 다음 equals메서드를 사용해서 비교
+
+<br>
+
+```
+String s = sb.toString();
+String s2 = sb2.toString();
+
+System.out.println(s.eqials(s2)); // true
+```
