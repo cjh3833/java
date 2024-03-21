@@ -400,3 +400,21 @@ String s2 = sb2.toString();
 
 System.out.println(s.eqials(s2)); // true
 ```
+
+<br><br>
+
+### StringBuffer 클래스의 생성자와 메서드
+
+StringBuffer는 추가, 변경, 삭제와 같이 저장된 내용을 변경할 수 있는 메서드들이 추가로 제공된다
+
+480p 참고
+
+<br><br>
+
+### StringBuilder란 ?
+
+- StringBuffer에서 쓰레드의 동기화를 제거한 것이 StringBuilder
+
+<br><br>
+
+## Math클래스
