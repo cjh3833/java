@@ -1,6 +1,33 @@
 import java.awt.*;
 import java.awt.event.*;
+import static java.lang.Math.*;
+import static java.lang.System.*;
 
+class MathEx1 {
+    public static void main(String args[]) {
+
+        // ceil : 올림, floor : 버림, round : 소수첫째자리에서 반올림
+        // rint : 값과 가장 가까운 정수형값을 double로 반환
+        double val = 90.7552;
+        out.println("round : " + round(val));
+        val *= 100;
+        out.println("round : " + round(val));
+        out.println("round " + val + " /100 : " + round(val / 100));
+        out.println("round " + val + " /100.0 : " + round(val / 100.0));
+        out.println();
+        out.printf("ceil(%3.1f) = %3.1f%n", 1.1, ceil(1.1));
+        out.printf("floor(%3.1f)=%3.1f%n", 1.5, floor(1.5));
+        out.printf("round(%3.1f)=%d%n", 1.1, round(1.1));
+        out.printf("round(%3.1f)=%d%n", 1.5, round(1.5));
+        out.printf("rint(%3.1f)=%f%n", 1.5, rint(1.5));
+        out.printf("round(%3.1f)=%d%n", -1.5, round(-1.5));
+        out.printf("rint(%3.1f)=%f%n", -1.5, rint(-1.5));
+        out.printf("ceil(%3.1f)=%f%n", -1.5, ceil(-1.5));
+        out.printf("floor(%3.1f)=%f%n", -1.5, floor(-1.5));
+    }
+}
+
+/* 예제 */
 // class ChainedExceptionEx {
 // public static void main(String[] args) {
 // try {
