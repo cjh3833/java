@@ -3,29 +3,67 @@ import java.awt.event.*;
 import static java.lang.Math.*;
 import static java.lang.System.*;
 
-class MathEx1 {
-    public static void main(String args[]) {
+// /* 예제9-22 */
+// class MathEx3 {
+// public static void main(String args[]) {
+// int x1 = 1, y1 = 1; // (1,1)
+// int x2 = 2, y2 = 2; // (2,2)
+//
+// double c = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)); // sqrt 제곱근
+// double a = c * sin(PI / 4);
+// double b = c * cos(PI / 4);
+//
+// out.printf("a = %f%n", a);
+// out.printf("b = %f%n", b);
+// out.printf("c = %f%n", c);
+// out.printf("angle%f rad%n", atan2(a, b));
+// out.printf("angle=%f degree%n%n", atan2(a, b) * 180 / PI);
+// }
+// }
 
-        // ceil : 올림, floor : 버림, round : 소수첫째자리에서 반올림
-        // rint : 값과 가장 가까운 정수형값을 double로 반환
-        double val = 90.7552;
-        out.println("round : " + round(val));
-        val *= 100;
-        out.println("round : " + round(val));
-        out.println("round " + val + " /100 : " + round(val / 100));
-        out.println("round " + val + " /100.0 : " + round(val / 100.0));
-        out.println();
-        out.printf("ceil(%3.1f) = %3.1f%n", 1.1, ceil(1.1));
-        out.printf("floor(%3.1f)=%3.1f%n", 1.5, floor(1.5));
-        out.printf("round(%3.1f)=%d%n", 1.1, round(1.1));
-        out.printf("round(%3.1f)=%d%n", 1.5, round(1.5));
-        out.printf("rint(%3.1f)=%f%n", 1.5, rint(1.5));
-        out.printf("round(%3.1f)=%d%n", -1.5, round(-1.5));
-        out.printf("rint(%3.1f)=%f%n", -1.5, rint(-1.5));
-        out.printf("ceil(%3.1f)=%f%n", -1.5, ceil(-1.5));
-        out.printf("floor(%3.1f)=%f%n", -1.5, floor(-1.5));
-    }
-}
+/* 예제 9-21 */
+// class MathEx2 {
+// public static void main(String args[]) {
+// int i = Integer.MIN_VALUE;
+//
+// out.println("i = " + i);
+// out.println("-i = " + (-i));
+//
+// try {
+// out.printf("negateExact(%d) = %d%n", 10, negateExact(10));
+// out.printf("negateExact(%d) = %d%n", -10, negateExact(-10));
+// out.printf("negateExact(%d) = %d%n", i, negateExact(i));
+// } catch (ArithmeticException e) {
+// // i를 long타입으로 형변환 다음에 negateExact(long a)를 호출
+// out.printf("negateExact(%d) = %d%n", (long) i, negateExact((long) i));
+// }
+// }
+// }
+
+/* 예제 9-20 */
+// class MathEx1 {
+// public static void main(String args[]) {
+
+// // ceil : 올림, floor : 버림, round : 소수첫째자리에서 반올림
+// // rint : 값과 가장 가까운 정수형값을 double로 반환
+// double val = 90.7552;
+// out.println("round : " + round(val));
+// val *= 100;
+// out.println("round : " + round(val));
+// out.println("round " + val + " /100 : " + round(val / 100));
+// out.println("round " + val + " /100.0 : " + round(val / 100.0));
+// out.println();
+// out.printf("ceil(%3.1f) = %3.1f%n", 1.1, ceil(1.1));
+// out.printf("floor(%3.1f)=%3.1f%n", 1.5, floor(1.5));
+// out.printf("round(%3.1f)=%d%n", 1.1, round(1.1));
+// out.printf("round(%3.1f)=%d%n", 1.5, round(1.5));
+// out.printf("rint(%3.1f)=%f%n", 1.5, rint(1.5));
+// out.printf("round(%3.1f)=%d%n", -1.5, round(-1.5));
+// out.printf("rint(%3.1f)=%f%n", -1.5, rint(-1.5));
+// out.printf("ceil(%3.1f)=%f%n", -1.5, ceil(-1.5));
+// out.printf("floor(%3.1f)=%f%n", -1.5, floor(-1.5));
+// }
+// }
 
 /* 예제 */
 // class ChainedExceptionEx {
