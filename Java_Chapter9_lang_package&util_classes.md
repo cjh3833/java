@@ -497,10 +497,13 @@ public final class Integer extends Number implements Comparale{
 --- | --- | --- | ---
 boolean | Boolean | Boolean(boolean value)<br>Boolean(String s) | Boolean b = new Boolean(true);<br>Boolean b2 = new Boolean("true");
 char | Character | Character(char value) | Character c = new Character('a');
-...
+byte | Byte | Byte (byte value)<br>Byte (String s) | Byte b = new Byte(10);<br>Byte b2 = new Byte("10");
+short | Short | Shrot (short value)<br>short (String s) | Shrot s = new Short(10);<br>Short s2 = new Short("10");
 int | Integer | Integer(int value)<br>Integer(String s) | Integer i = new Integer(100);<br>Integer i2 = new Integer("100");
-...
+long | Long | Long (long value)<br>Long (String s) | Long l = new Long(100);<br>Long l2 = new Long("100")
+double | Double | Double (double value)<br>Double (String s) | Double d = new Double(1.0);<br>Double d2 = new Double("1.0");
 
+래퍼 클래스의 생성자
 
 
 <br>
@@ -516,3 +519,37 @@ int | Integer | Integer(int value)<br>Integer(String s) | Integer i = new Intege
 <br><br>
 
 ### 문자열을 숫자로 변환하기
+- 문자열을 숫자로 변환할 때는
+
+```
+int i = new Integer("100").intValue();
+int i2 = Integer.parseInt("100"); // 주로 이 방법을 많이 사용한다
+Integer i3 = Integer.valueOf("100"); // wrapper 클래스
+
+```
+
+
+| 문자열 -> 기본형 | 
+| --- |
+byte b = Byte.parseByte("100");
+short s = Short.parseShort("100");
+int i = Integer.parseInt("100");
+long l = Long.parseLong("100");
+float f = Float.parseFloat("3.14");
+double d = Double.parseDouble("3.14");
+
+
+<br>
+
+| 문자열 -> 래퍼 클래스 | 
+| --- | 
+Byte b = Byte.valueOf("100");
+Short s = Short.valueOf("100");
+Integer i = Integer.valueOf("100");
+Long l = Long.valueOf("100");
+Float f = FLoat.valueOf("3.14");
+Double d = Double.valueOf("3.14");
+
+<br>
+
+- JDK1.5 부터 도입된 오토박싱 기능때문에 반환값이 기본형일때와 래퍼클래스일때의 차이가 없어졌다<br>그래서 구별없이 valueOf()를 쓰는것도 괜찮다

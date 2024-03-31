@@ -3,6 +3,24 @@ import java.awt.event.*;
 import static java.lang.Math.*;
 import static java.lang.System.*;
 
+class WrapperEx1 {
+    public static void main(String[] args) {
+        Integer i = new Integer(100);
+        Integer i2 = new Integer(100);
+
+        out.println("i == i2 ? " + (i == i2)); // false
+        out.println("i.equals(i2) ? " + i.equals(i2)); // true
+        out.println("i.compareTo(i2) = " + i.compareTo(i2)); // 0
+        out.println("i.toString() = " + i.toString()); // 100
+
+        out.println("MAX_VALUE = " + Integer.MAX_VALUE);
+        out.println("MIN_VALUE = " + Integer.MIN_VALUE);
+        out.println("SIZE = " + Integer.SIZE + " bits");
+        out.println("BYTES = " + Integer.BYTES + " bytes");
+        out.println("TYPE = " + Integer.TYPE);
+    }
+}
+
 // /* 예제9-22 */
 // class MathEx3 {
 // public static void main(String args[]) {
