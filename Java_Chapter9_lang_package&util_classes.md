@@ -553,3 +553,49 @@ Double d = Double.valueOf("3.14");
 <br>
 
 - JDK1.5 부터 도입된 오토박싱 기능때문에 반환값이 기본형일때와 래퍼클래스일때의 차이가 없어졌다<br>그래서 구별없이 valueOf()를 쓰는것도 괜찮다
+
+<br><br>
+
+### 오토박싱 & 언박싱(autoboxing & unboxing)
+- JDK1.5 이후에는 기본형과 참조형 간의 덧셈이 가능
+
+```
+int i = 5;
+Integer iObj = new Integer(7);
+
+int sum = i + iObj; //에러, 기본형과 참조형 간의 덧셈 불가(JDK1.5 이전)
+```
+
+- 컴파일러가 자동으로 변환하는 코드를 넣어주기 떄문
+- 아래의 경우 Integer객체를 int타입의 값으로 변환해주는 intValue()를 추가해준다
+
+<br>
+
+컴파일 전의 코드 | 컴파일 후의 코드
+--- | ---
+int i = 5;<br>Integer iObj = new Integer(7);<br><br>int sum = i + iObj; | int i = 5;<br>Integer iObj = new Integer(7);<br><br>int sum = i + iObj.intValue();
+
+
+<br>
+
+- 오토박싱 : 기본형 값을 래퍼 클래스의 객체로 자동 변환해주는 것
+
+- 언박싱 : 래퍼 클래스의 객체를 기본형 값으로 자동 변환
+
+
+```
+ArrayList<Integer> list = new ArrayList<Integer>();
+list.add(10); //오토박스. 10 -> new Integer(10);
+
+int Value = list.get(0); //언박싱. new Integer(10) -> 10
+```
+
+<br>
+
+컴파일 전의 코드 | 컴파일 후의 코드
+--- | ---
+Integer intg = (Integer)i;<br>Object obj = (Object)i;<br>Long lng = 100L; | Integer intg = Integer.valueOf(i);<br>Object obj = (Object)Integer.valueOf(i);<br>Long lng = new Long(100L);
+
+<br><br>
+
+## 2. 유용한 클래스
